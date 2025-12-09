@@ -9,8 +9,8 @@ import frc.robot.subsystems.tank.TankCommands;
 public class RobotContainer {
     private final CommandXboxController driverController =
             new CommandXboxController(0);
-    private double MAX_DRIVE_SPEED = 1;
-    private double MAX_ROTATION_SPEED = 1;
+    private double MAX_DRIVE_SPEED = 0.8;
+    private double MAX_ROTATION_SPEED = 0.6;
     private final Tank tank = Tank.getTank();
 
     public RobotContainer() {
@@ -49,18 +49,18 @@ public class RobotContainer {
     }
 
     private void toggleDriveSpeed() {
-        if (MAX_DRIVE_SPEED == 1) {
-            MAX_DRIVE_SPEED = 0.5;
+        if (MAX_DRIVE_SPEED == 0.8) {
+            MAX_DRIVE_SPEED = 0.6;
         } else {
-            MAX_DRIVE_SPEED = 1;
+            MAX_DRIVE_SPEED = 0.8;
         }
     }
 
     private void toggleRotationSpeed() {
-        if (MAX_ROTATION_SPEED == 0.72) {
+        if (MAX_ROTATION_SPEED == 0.6) {
             MAX_ROTATION_SPEED = 0.42;
         } else {
-            MAX_ROTATION_SPEED = 0.72;
+            MAX_ROTATION_SPEED = 0.6;
         }
     }
 }
