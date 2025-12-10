@@ -14,7 +14,10 @@ public class RobotContainer {
     public RobotContainer() {
         configureBindings();
         TANK.setDefaultCommand(
-                TankCommands.getArcadeDriveCommand(driverController.getLeftY(), driverController.getRightX())
+                TankCommands.getArcadeDriveCommand(
+                        () -> driverController.getLeftY(),
+                        () -> driverController.getRightX()
+                )
         );
     }
 
