@@ -1,4 +1,5 @@
 package frc.robot;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.subsystems.tank.Tank;
@@ -10,7 +11,7 @@ public class RobotContainer {
     public RobotContainer() {
         configureBindings();
         tank.setDefaultCommand(
-                TankCommands.getSetArcadeDriveCommand(tank)
+                TankCommands.getArcadeDriveCommand(tank)
         );
     }
 

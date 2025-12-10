@@ -1,4 +1,5 @@
 package frc.robot.subsystems.tank;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -11,7 +12,7 @@ public class Tank extends SubsystemBase {
     public Tank() {
     }
 
-    void arcadeDriveCalculation() {
+    void arcadeDrive() {
         double drive = -driverController.getLeftY() * TankConstants.MAX_DRIVE_SPEED;
         double rotation = driverController.getRightX() * TankConstants.MAX_ROTATION_SPEED;
 
