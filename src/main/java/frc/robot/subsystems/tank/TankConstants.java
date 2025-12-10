@@ -1,15 +1,15 @@
 package frc.robot.subsystems.tank;
-
 import com.ctre.phoenix.motorcontrol.FollowerType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class TankConstants {
-    private static final int LEFT_MASTER_ID = 1, LEFT_FOLLOWER_ID = 2 ,RIGHT_MASTER_ID = 3, RIGHT_FOLLOWER_ID = 4;
+    private static final int LEFT_MASTER_ID = 1, LEFT_FOLLOWER_ID = 2, RIGHT_MASTER_ID = 3, RIGHT_FOLLOWER_ID = 4;
     static final WPI_TalonSRX LEFT_MASTER = new WPI_TalonSRX(LEFT_MASTER_ID);
     static final WPI_TalonSRX LEFT_FOLLOWER = new WPI_TalonSRX(LEFT_FOLLOWER_ID);
-    static final WPI_TalonSRX RIGHT_MASTER= new WPI_TalonSRX(RIGHT_MASTER_ID);
+    static final WPI_TalonSRX RIGHT_MASTER = new WPI_TalonSRX(RIGHT_MASTER_ID);
     static final WPI_TalonSRX RIGHT_FOLLOWER = new WPI_TalonSRX(RIGHT_FOLLOWER_ID);
 
     static final DifferentialDrive DIFFERENTIAL_DRIVE = new DifferentialDrive(LEFT_MASTER, RIGHT_MASTER);
@@ -21,11 +21,15 @@ public class TankConstants {
     private static final boolean RIGHT_MOTOR_2_INVERTED_VALUE = false;
     private static final NeutralMode NEUTRAL_MODE = NeutralMode.Brake;
 
+    static final CommandXboxController DRIVER_CONTROLLER =
+            new CommandXboxController(0);
+    static double MAX_DRIVE_SPEED = 0.7;
+    static double MAX_ROTATION_SPEED = 0.6;
+
     static {
         configLeftMotors();
         configRightMotors();
     }
-
 
     private static void configLeftMotors() {
         LEFT_MASTER.configFactoryDefault();
@@ -53,6 +57,6 @@ public class TankConstants {
         RIGHT_FOLLOWER.setInverted(RIGHT_MOTOR_2_INVERTED_VALUE);
         RIGHT_MASTER.setNeutralMode(NEUTRAL_MODE);
         RIGHT_FOLLOWER.setNeutralMode(NEUTRAL_MODE);
-        RIGHT_FOLLOWER.follow(RIGHT_MASTER,FollowerType.PercentOutput);
+        RIGHT_FOLLOWER.follow(RIGHT_MASTER, FollowerType.PercentOutput);
     }
 }

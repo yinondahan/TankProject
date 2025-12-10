@@ -1,66 +1,23 @@
 package frc.robot;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.tank.Tank;
 import frc.robot.subsystems.tank.TankCommands;
 
 public class RobotContainer {
-    private final CommandXboxController driverController =
-            new CommandXboxController(0);
-    private double MAX_DRIVE_SPEED = 0.8;
-    private double MAX_ROTATION_SPEED = 0.6;
-    private final Tank tank = Tank.getTank();
+    private static final Tank tank = new Tank();
 
     public RobotContainer() {
         configureBindings();
-    }
-
-    private void configureBindings() {
-        bindDefaultCommands();
-        bindControllerCommands();
-        bindControllerToggles();
-    }
-
-    private void bindDefaultCommands() {
         tank.setDefaultCommand(
-                TankCommands.getSetArcadeDriveCommand(
-                        () -> modifyStick(-driverController.getLeftY()) * MAX_DRIVE_SPEED,
-                        () -> modifyStick(driverController.getRightX()) * MAX_ROTATION_SPEED
-                )
+                TankCommands.getSetArcadeDriveCommand(tank)
         );
     }
 
-    private void bindControllerToggles() {
-        driverController.leftStick().onTrue(Commands.runOnce(this::toggleDriveSpeed));
-        driverController.rightStick().onTrue(Commands.runOnce(this::toggleRotationSpeed));
-    }
-
-    private void bindControllerCommands() {
+    private void configureBindings() {
     }
 
     public Command getAutonomousCommand() {
         return Commands.print("No autonomous command configured");
-    }
-
-    private double modifyStick(double stickValue) {
-        return Math.copySign(stickValue * stickValue, stickValue);
-    }
-
-    private void toggleDriveSpeed() {
-        if (MAX_DRIVE_SPEED == 0.8) {
-            MAX_DRIVE_SPEED = 0.6;
-        } else {
-            MAX_DRIVE_SPEED = 0.8;
-        }
-    }
-
-    private void toggleRotationSpeed() {
-        if (MAX_ROTATION_SPEED == 0.6) {
-            MAX_ROTATION_SPEED = 0.42;
-        } else {
-            MAX_ROTATION_SPEED = 0.6;
-        }
     }
 }
