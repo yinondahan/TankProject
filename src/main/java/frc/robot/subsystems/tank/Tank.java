@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Tank extends SubsystemBase {
     private final DifferentialDrive differentialDrive = TankConstants.DIFFERENTIAL_DRIVE;
-    
+
     public Tank() {
     }
 

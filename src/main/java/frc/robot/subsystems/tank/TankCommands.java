@@ -7,7 +7,8 @@ import frc.robot.RobotContainer;
 public class TankCommands {
     public static Command getArcadeDriveCommand(double targetDriveSpeed, double targetRotationSpeed) {
         return new FunctionalCommand(
-                () -> {},
+                () -> {
+                },
                 () -> RobotContainer.TANK.arcadeDrive(targetDriveSpeed, targetRotationSpeed),
                 (interrupted) -> RobotContainer.TANK.stop(),
                 () -> false,
