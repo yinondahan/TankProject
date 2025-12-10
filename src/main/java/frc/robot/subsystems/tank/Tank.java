@@ -3,23 +3,21 @@ package frc.robot.subsystems.tank;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Tank extends SubsystemBase {
     private final DifferentialDrive differentialDrive = TankConstants.DIFFERENTIAL_DRIVE;
-    private final CommandXboxController driverController = TankConstants.DRIVER_CONTROLLER;
-
+    
     public Tank() {
     }
 
-    void arcadeDrive() {
-        double drive = -driverController.getLeftY() * TankConstants.MAX_DRIVE_SPEED;
-        double rotation = driverController.getRightX() * TankConstants.MAX_ROTATION_SPEED;
+    void arcadeDrive(double targetDriveSpeed, double targetRotationSpeed) {
+        double limitedDriveSpeed = -targetDriveSpeed * TankConstants.MAX_DRIVE_SPEED;
+        double limitedRotationSpeed = targetRotationSpeed * TankConstants.MAX_ROTATION_SPEED;
 
-        drive = MathUtil.applyDeadband(drive, 0.02);
-        rotation = MathUtil.applyDeadband(rotation, 0.02);
+        double deadbandedDriveSpeed = MathUtil.applyDeadband(limitedDriveSpeed, 0.02);
+        double deadbandedRotationSpeed = MathUtil.applyDeadband(limitedRotationSpeed, 0.02);
 
-        differentialDrive.arcadeDrive(drive, rotation, true);
+        differentialDrive.arcadeDrive(deadbandedDriveSpeed, deadbandedRotationSpeed, true);
     }
 
     void stop() {
