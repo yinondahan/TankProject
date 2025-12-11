@@ -11,13 +11,13 @@ public class Tank extends SubsystemBase {
     }
 
     void arcadeDrive(double targetDriveSpeed, double targetRotationSpeed) {
-        double limitedDriveSpeed = targetDriveSpeed * TankConstants.MAX_DRIVE_SPEED;
-        double limitedRotationSpeed = targetRotationSpeed * TankConstants.MAX_ROTATION_SPEED;
+        final double limitedDriveSpeed = targetDriveSpeed * TankConstants.MAX_DRIVE_SPEED;
+        final double limitedRotationSpeed = targetRotationSpeed * TankConstants.MAX_ROTATION_SPEED;
 
         final double deadbandedDriveSpeed = MathUtil.applyDeadband(limitedDriveSpeed, TankConstants.DRIVE_DEADBAND);
         final double deadbandedRotationSpeed = MathUtil.applyDeadband(limitedRotationSpeed, TankConstants.ROTATION_DEADBAND);
 
-        differentialDrive.arcadeDrive(deadbandedDriveSpeed, deadbandedRotationSpeed, true);
+        differentialDrive.arcadeDrive(deadbandedDriveSpeed, deadbandedRotationSpeed, TankConstants.ARCADE_DRIVE_SQUARE_INPUT);
     }
 
     void stop() {

@@ -17,18 +17,22 @@ public class TankConstants {
             RIGHT_MASTER = new WPI_TalonSRX(RIGHT_MASTER_ID),
             RIGHT_FOLLOWER = new WPI_TalonSRX(RIGHT_FOLLOWER_ID);
 
-    static final DifferentialDrive DIFFERENTIAL_DRIVE = new DifferentialDrive(LEFT_MASTER, RIGHT_MASTER);
-    private static final double VOLTAGE_LIMIT = 12;
-
     private static final boolean
             LEFT_MASTER_INVERTED_VALUE = true,
             LEFT_FOLLOWER_INVERTED_VALUE = true,
             RIGHT_MASTER_INVERTED_VALUE = false,
             RIGHT_FOLLOWER_INVERTED_VALUE = false;
     private static final NeutralMode NEUTRAL_MODE = NeutralMode.Brake;
+    private static final double VOLTAGE_LIMIT = 12;
 
-    static final double MAX_DRIVE_SPEED = 0.7, MAX_ROTATION_SPEED = 0.56;
-    static final double DRIVE_DEADBAND = 0.02, ROTATION_DEADBAND = 0.02;
+    static final DifferentialDrive DIFFERENTIAL_DRIVE = new DifferentialDrive(LEFT_MASTER, RIGHT_MASTER);
+    static final double
+            MAX_DRIVE_SPEED = 0.7,
+            MAX_ROTATION_SPEED = 0.56;
+    static final double
+            DRIVE_DEADBAND = 0.02,
+            ROTATION_DEADBAND = 0.02;
+    static final boolean ARCADE_DRIVE_SQUARE_INPUT = true;
 
     static {
         configLeftMotors();
