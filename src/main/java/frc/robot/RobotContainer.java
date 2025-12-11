@@ -9,13 +9,13 @@ import frc.robot.subsystems.tank.TankCommands;
 public class RobotContainer {
     public static final Tank TANK = new Tank();
 
-    private final CommandXboxController driverController = new CommandXboxController(0);
+    private static final CommandXboxController driverController = new CommandXboxController(0);
 
     public RobotContainer() {
         configureBindings();
         TANK.setDefaultCommand(
                 TankCommands.getArcadeDriveCommand(
-                        () -> driverController.getLeftY(),
+                        () -> -driverController.getLeftY(),
                         () -> driverController.getRightX()
                 )
         );

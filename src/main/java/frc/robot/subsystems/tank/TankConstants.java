@@ -20,14 +20,15 @@ public class TankConstants {
     static final DifferentialDrive DIFFERENTIAL_DRIVE = new DifferentialDrive(LEFT_MASTER, RIGHT_MASTER);
     private static final double VOLTAGE_LIMIT = 12;
 
-    private static final boolean LEFT_MOTOR_1_INVERTED_VALUE = true;
-    private static final boolean LEFT_MOTOR_2_INVERTED_VALUE = true;
-    private static final boolean RIGHT_MOTOR_1_INVERTED_VALUE = false;
-    private static final boolean RIGHT_MOTOR_2_INVERTED_VALUE = false;
+    private static final boolean
+            LEFT_MASTER_INVERTED_VALUE = true,
+            LEFT_FOLLOWER_INVERTED_VALUE = true,
+            RIGHT_MASTER_INVERTED_VALUE = false,
+            RIGHT_FOLLOWER_INVERTED_VALUE = false;
     private static final NeutralMode NEUTRAL_MODE = NeutralMode.Brake;
 
-    static final double MAX_DRIVE_SPEED = 0.7;
-    static final double MAX_ROTATION_SPEED = 0.6;
+    static final double MAX_DRIVE_SPEED = 0.7, MAX_ROTATION_SPEED = 0.56;
+    static final double DRIVE_DEADBAND = 0.02, ROTATION_DEADBAND = 0.02;
 
     static {
         configLeftMotors();
@@ -41,8 +42,8 @@ public class TankConstants {
         LEFT_FOLLOWER.enableVoltageCompensation(true);
         LEFT_MASTER.configVoltageCompSaturation(VOLTAGE_LIMIT);
         LEFT_FOLLOWER.configVoltageCompSaturation(VOLTAGE_LIMIT);
-        LEFT_MASTER.setInverted(LEFT_MOTOR_1_INVERTED_VALUE);
-        LEFT_FOLLOWER.setInverted(LEFT_MOTOR_2_INVERTED_VALUE);
+        LEFT_MASTER.setInverted(LEFT_MASTER_INVERTED_VALUE);
+        LEFT_FOLLOWER.setInverted(LEFT_FOLLOWER_INVERTED_VALUE);
         LEFT_MASTER.setNeutralMode(NEUTRAL_MODE);
         LEFT_FOLLOWER.setNeutralMode(NEUTRAL_MODE);
         LEFT_FOLLOWER.follow(LEFT_MASTER, FollowerType.PercentOutput);
@@ -55,8 +56,8 @@ public class TankConstants {
         RIGHT_FOLLOWER.enableVoltageCompensation(true);
         RIGHT_MASTER.configVoltageCompSaturation(VOLTAGE_LIMIT);
         RIGHT_FOLLOWER.configVoltageCompSaturation(VOLTAGE_LIMIT);
-        RIGHT_MASTER.setInverted(RIGHT_MOTOR_1_INVERTED_VALUE);
-        RIGHT_FOLLOWER.setInverted(RIGHT_MOTOR_2_INVERTED_VALUE);
+        RIGHT_MASTER.setInverted(RIGHT_MASTER_INVERTED_VALUE);
+        RIGHT_FOLLOWER.setInverted(RIGHT_FOLLOWER_INVERTED_VALUE);
         RIGHT_MASTER.setNeutralMode(NEUTRAL_MODE);
         RIGHT_FOLLOWER.setNeutralMode(NEUTRAL_MODE);
         RIGHT_FOLLOWER.follow(RIGHT_MASTER, FollowerType.PercentOutput);
