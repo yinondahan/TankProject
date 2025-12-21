@@ -27,8 +27,8 @@ public class TankConstants {
 
     static final DifferentialDrive DIFFERENTIAL_DRIVE = new DifferentialDrive(LEFT_MASTER, RIGHT_MASTER);
     static final double
-            MAX_DRIVE_SPEED = 0.7,
-            MAX_ROTATION_SPEED = 0.56;
+            MAX_DRIVE_SPEED = 0.6,
+            MAX_ROTATION_SPEED = 0.67;
     static final double
             DRIVE_DEADBAND = 0.02,
             ROTATION_DEADBAND = 0.02;
